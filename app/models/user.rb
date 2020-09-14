@@ -9,8 +9,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :username, presence: true,  uniqueness: true
 
-  # ==========ここから追加する==========
+ 
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
@@ -23,6 +24,5 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
-  # ==========ここまで追加する==========
 
 end
