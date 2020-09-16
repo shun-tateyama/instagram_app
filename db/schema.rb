@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_070632) do
+ActiveRecord::Schema.define(version: 2020_09_16_100938) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2020_09_16_070632) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "follows", force: :cascade do |t|
@@ -82,6 +87,10 @@ ActiveRecord::Schema.define(version: 2020_09_16_070632) do
     t.string "name", default: "", null: false
     t.string "profile_photo"
     t.string "username", default: "", null: false
+    t.string "website"
+    t.text "self_introduction"
+    t.string "tel"
+    t.string "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
