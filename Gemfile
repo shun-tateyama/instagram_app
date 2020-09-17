@@ -36,3 +36,6 @@ gem "mini_magick"
 gem "pry-byebug"
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
 gem 'ransack'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
