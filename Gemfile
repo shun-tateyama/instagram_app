@@ -35,3 +35,4 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem "pry-byebug"
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
+gem 'ransack'

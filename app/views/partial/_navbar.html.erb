@@ -7,8 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-md-auto align-items-center">
         <li>
-
-          <%# =====この行を編集する===== %>
+          <%= search_form_for @search do |f| %>
+          
+            <%= f.label :caption_cont,"検索" %>
+            <%= f.search_field :caption_cont %>
+            
+            <%= f.submit %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to "投稿", new_post_path, class: "btn btn-primary" %>
 
         </li>

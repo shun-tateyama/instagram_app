@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i(show destroy)
-    
+
   def new
     @post = Post.new
     @post.photos.build
@@ -22,8 +22,9 @@ class PostsController < ApplicationController
   end
   
   def index
-    # この行を編集する
     @posts = Post.limit(10).includes(:photos, :user).order('created_at DESC')
+    @search = Post.ransack(params[:search])
+    @posts_search = @search.result(distinct: true)
   end
   
   def show
