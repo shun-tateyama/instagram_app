@@ -1,5 +1,5 @@
 <div class="profile-wrap">
-  <div class="row">
+  <div class="row top">
     <div class="col-md-4 text-center">
       <%= image_tag avatar_url(@user), class: "round-img" %>
     </div>
@@ -43,6 +43,8 @@
         </p>
         
       </div>
+      <%= @user.posts.count %>
+      <%= link_to "投稿数","#" %>
       <%= @user.follow_count %>
       <%= link_to "フォロー", {controller: :users,action: :follow_list,user_id: @user.id}, method: :get %>
       <!--#クリックすると、フォローリストに飛ぶ-->
@@ -55,5 +57,15 @@
       <% end %>
       <!--#ユーザーがカレントユーザーじゃなかったら、'_follow_form.html.erb'を表示-->
     </div>
+   
   </div>
+   <div class= " photos col-md-12">
+     <% @posts.each do |post| %>
+       <% if @user.id  == post.user_id %>
+         <%= link_to(post_path(post)) do %>
+          <%= image_tag post.photos.first.image.url(:medium), class: "img-thumbnail" %>
+         <% end %>
+       <% end %>
+     <% end %>
+    </div>
 </div>

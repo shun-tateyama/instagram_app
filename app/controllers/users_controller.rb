@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @posts = Post.includes(:photos).order('created_at DESC')
   end
   
   def follow
