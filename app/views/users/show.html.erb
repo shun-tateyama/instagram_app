@@ -59,7 +59,7 @@
     </div>
    
   </div>
-   <div class= " photos col-md-12">
+   <div class= " photos col-md-12 ">
      <% @posts.each do |post| %>
        <% if @user.id  == post.user_id %>
          <%= link_to(post_path(post)) do %>

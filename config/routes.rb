@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :comments, only: %i(create destroy)
   end
   
+  devise_scope :user do
+    get '/users/auth/:provider/upgrade' => 'users/omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
+    get '/users/auth/:provider/setup', :to => 'users/omniauth_callbacks#setup'
+  end
+  
   put 'users/follow/:user_id' => 'users#follow'
   put 'users/unfollow/:user_id' => 'users#unfollow'
   #フォローとフォローを外すアクション
